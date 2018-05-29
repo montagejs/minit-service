@@ -1,0 +1,26 @@
+{
+  "name": "minit-service",
+  "version": "1.0.0",
+  "description": "Docker image with HTTP REST endpoints for running minit commands on a given file system.",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/montagestudio/minit-service.git"
+  },
+  "engines": {
+    "node": "4.8.x",
+    "npm": "2.15.x"
+  },
+  "scripts": {
+    "build": "docker build -t minit-service .",
+    "build:test": "npm run build && docker build -t minit-service-test -f Dockerfile.test .",
+    "test": "npm run build:test && docker run minit-service-test"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3"
+  }
+}

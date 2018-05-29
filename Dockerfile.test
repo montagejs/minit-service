@@ -1,0 +1,9 @@
+FROM minit-service
+
+RUN npm install -g mocha@^5.2.0
+
+COPY ./test/ ./test
+RUN npm update
+RUN npm install
+
+ENTRYPOINT ["mocha"]
