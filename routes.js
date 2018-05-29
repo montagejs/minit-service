@@ -3,10 +3,11 @@
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const Minit = require('./minit');
+const path = require('path');
 
 const MINIT_PATH = '/usr/local/bin/minit';
 
-module.exports = (app) => {
+module.exports = (app, home) => {
     app.use(cors());
     app.use(bodyParser.json());
 
@@ -18,13 +19,13 @@ module.exports = (app) => {
     })));
 
     app.use((req, res, next) => {
-        const path = req.query.path;
+        const pathArgument = path.join(home, req.query.path);
         if (!path) {
             res.status(400).json({
                 error: 'path query is required'
             });
         }
-        res.locals.path = path;
+        res.locals.path = pathArgument;
         next();
     });
 

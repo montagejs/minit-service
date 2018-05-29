@@ -8,6 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 const SPEC_FS_HOME = '/tmp/minit-service-spec/';
+const SPEC_PATH_QUERY = 'minit-service-spec';
 
 describe("Minit service", () => {
     let app;
@@ -18,13 +19,13 @@ describe("Minit service", () => {
 
     beforeEach(() => {
         app = express();
-        routes(app);
+        routes(app, '/tmp/');
     });
 
     describe('POST /app', () => {
         it('creates an app', (done) => {
             supertest(app)
-                .post(`/app/myapp?path=${encodeURI(SPEC_FS_HOME)}`)
+                .post(`/app/myapp?path=${encodeURI(SPEC_PATH_QUERY)}`)
                 .expect(200)
                 .end((err) => {
                     if (err) return done(err);
@@ -44,7 +45,7 @@ describe("Minit service", () => {
             const uiDirectory = path.join(SPEC_FS_HOME, 'ui');
             fs.mkdirSync(uiDirectory);
             supertest(app)
-                .post(`/component/mycomponent?path=${encodeURI(SPEC_FS_HOME)}`)
+                .post(`/component/mycomponent?path=${encodeURI(SPEC_PATH_QUERY)}`)
                 .expect(200)
                 .end((err) => {
                     if (err) return done(err);
@@ -59,7 +60,7 @@ describe("Minit service", () => {
     describe('POST /module', () => {
         it('creates a module', (done) => {
             supertest(app)
-                .post(`/module/mymodule?path=${encodeURI(SPEC_FS_HOME)}`)
+                .post(`/module/mymodule?path=${encodeURI(SPEC_PATH_QUERY)}`)
                 .expect(200)
                 .end((err) => {
                     if (err) return done(err);

@@ -5,7 +5,7 @@ const routes = require('./routes');
 
 const app = express();
 
-routes(app);
+routes(app, '/home/');
 
 console.log('Listening on port 80');
 app.listen(80);
