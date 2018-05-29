@@ -39,7 +39,9 @@
     },
     "globals": {
         "jasmine": false,
+        "before": false,
         "beforeEach": false,
+        "after": false,
         "afterEach": false,
         "describe": false,
         "it": false,

@@ -17,10 +17,15 @@
     "test": "npm run build:test && docker run minit-service-test"
   },
   "devDependencies": {
-    "chai": "^4.1.2"
+    "chai": "^4.1.2",
+    "supertest": "^3.1.0"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "cors": "^2.8.4",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "minit": "^0.5.8",
+    "q": "~0.9.7",
+    "q-io": "^1.13.4"
   }
 }
