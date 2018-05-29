@@ -12,6 +12,7 @@
     "npm": "2.15.x"
   },
   "scripts": {
+    "lint": "eslint .",
     "build": "docker build -t minit-service .",
     "build:test": "npm run build && docker build -t minit-service-test -f Dockerfile.test .",
     "test": "npm run build:test && docker run minit-service-test",
@@ -21,6 +22,7 @@
     "chai": "^4.1.2",
     "concurrently": "^3.5.1",
     "doc": "0.0.3",
+    "eslint": "^4.19.1",
     "http-server": "^0.11.1",
     "supertest": "^3.1.0"
   },
