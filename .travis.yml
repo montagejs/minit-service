@@ -1,0 +1,15 @@
+sudo: required
+dist: trusty
+language: node_js
+node_js:
+- "4"
+services:
+- docker
+install:
+- docker version
+- npm install
+before_script:
+- export DOCKER_CLIENT_TIMEOUT=120
+script:
+- npm run lint
+- npm test
