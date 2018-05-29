@@ -1,0 +1,73 @@
+swagger: '2.0'
+
+info:
+  version: "1.0.0"
+  title: Minit Service
+
+paths:
+  /app/{appName}:
+    post:
+      description: Runs `minit create:app -n {appName}`.
+      parameters:
+        - name: appName
+          in: path
+          description: Name of the minit application
+          required: true
+          type: string
+        - name: path
+          in: query
+          description: Path to create the app in
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              created:
+                type: boolean
+  /component/{componentName}:
+    post:
+      description: Runs `minit create:component -n {componentName}`.
+      parameters:
+        - name: componentName
+          in: path
+          description: Name of the new component (will be suffixed with .reel)
+          required: true
+          type: string
+        - name: path
+          in: query
+          description: Path to create the component in. `ui/` will be created if it does not exist in the path.
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              created:
+                type: boolean
+  /module/{moduleName}:
+    post:
+      description: Runs `minit create:module -n {moduleName}`.
+      parameters:
+        - name: moduleName
+          in: path
+          description: Name of the new module (will be suffixed with .js)
+          required: true
+          type: string
+        - name: path
+          in: query
+          description: Path to create the module.js in
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              created:
+                type: boolean

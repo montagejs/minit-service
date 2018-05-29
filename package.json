@@ -14,18 +14,20 @@
   "scripts": {
     "build": "docker build -t minit-service .",
     "build:test": "npm run build && docker build -t minit-service-test -f Dockerfile.test .",
-    "test": "npm run build:test && docker run minit-service-test"
+    "test": "npm run build:test && docker run minit-service-test",
+    "doc": "concurrently 'http-server -p 28824' 'open http://localhost:28824/doc'"
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "concurrently": "^3.5.1",
+    "doc": "0.0.3",
+    "http-server": "^0.11.1",
     "supertest": "^3.1.0"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",
-    "minit": "^0.5.8",
-    "q": "~0.9.7",
-    "q-io": "^1.13.4"
+    "minit": "^0.5.8"
   }
 }
