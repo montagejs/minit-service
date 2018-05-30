@@ -48,6 +48,6 @@ module.exports = (app, home) => {
     });
 
     app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
-        res.json(500).json(err);
+        res.status(500).json(err);
     });
 };
