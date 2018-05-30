@@ -22,10 +22,10 @@ describe("Minit service", () => {
         routes(app, '/tmp/');
     });
 
-    describe('POST /app', () => {
+    describe('POST /apps', () => {
         it('creates an app', (done) => {
             supertest(app)
-                .post(`/app/myapp?path=${encodeURI(SPEC_PATH_QUERY)}`)
+                .post(`/apps/myapp?path=${encodeURI(SPEC_PATH_QUERY)}`)
                 .expect(200)
                 .end((err) => {
                     if (err) return done(err);
@@ -40,12 +40,12 @@ describe("Minit service", () => {
         }).timeout(10000);
     });
 
-    describe('POST /component', () => {
+    describe('POST /components', () => {
         it('creates a component', (done) => {
             const uiDirectory = path.join(SPEC_FS_HOME, 'ui');
             fs.mkdirSync(uiDirectory);
             supertest(app)
-                .post(`/component/mycomponent?path=${encodeURI(SPEC_PATH_QUERY)}`)
+                .post(`/components/mycomponent?path=${encodeURI(SPEC_PATH_QUERY)}`)
                 .expect(200)
                 .end((err) => {
                     if (err) return done(err);
@@ -57,10 +57,10 @@ describe("Minit service", () => {
         }).timeout(10000);
     });
 
-    describe('POST /module', () => {
+    describe('POST /modules', () => {
         it('creates a module', (done) => {
             supertest(app)
-                .post(`/module/mymodule?path=${encodeURI(SPEC_PATH_QUERY)}`)
+                .post(`/modules/mymodule?path=${encodeURI(SPEC_PATH_QUERY)}`)
                 .expect(200)
                 .end((err) => {
                     if (err) return done(err);

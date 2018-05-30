@@ -5,7 +5,7 @@ info:
   title: Minit Service
 
 paths:
-  /app/{appName}:
+  /apps/{appName}:
     post:
       description: Runs `minit create:app -n {appName}`.
       parameters:
@@ -27,7 +27,7 @@ paths:
             properties:
               created:
                 type: boolean
-  /component/{componentName}:
+  /components/{componentName}:
     post:
       description: Runs `minit create:component -n {componentName}`.
       parameters:
@@ -49,7 +49,7 @@ paths:
             properties:
               created:
                 type: boolean
-  /module/{moduleName}:
+  /modules/{moduleName}:
     post:
       description: Runs `minit create:module -n {moduleName}`.
       parameters:
